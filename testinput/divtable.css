@@ -1,0 +1,42 @@
+.rTable {
+	display: table;
+}
+
+.rTableRow {
+	display: table-row;
+}
+
+.rTableHeading {
+	display: table-cell;
+	background-color: #ddddddd;
+}
+
+.rTableCell {
+	display: table-cell;
+	padding: 3px 10px;
+	border: 1px solid #999999;
+}
+
+.rTableHead {
+	display: table-cell;
+	padding: 3px 10px;
+	border: 1px solid #999999;
+	background-color: #dddddd;
+}
+
+.rTableHeader {
+	display: table-cell;
+	background-color: #dddddd;
+	font-weight: bold;
+}
+
+.rTableFooter {
+	display: table-cell;
+	font-weight: bold;
+	background-color: #dddddd;
+}
+
+.rTableBody {
+	display: table-row-group;
+}
+
