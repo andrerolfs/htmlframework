@@ -4,11 +4,15 @@ import groovy.xml.MarkupBuilder
 
 class HtmlTooling {
 
-  static String text(HtmlElement element) {
+  static String htmlText(HtmlElement element) {
     def writer = new StringWriter()
-    def html = new MarkupBuilder(writer)
+    def htmlBuilder = new MarkupBuilder(writer)
 
-    element.render(html)
+    HtmlComposite html = new HtmlComposite()
+    html.content.add(element)
+    html.tag = "html"
+
+    html.render(htmlBuilder)
     return writer
   }
 }

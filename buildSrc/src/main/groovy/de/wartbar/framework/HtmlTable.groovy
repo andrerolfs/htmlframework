@@ -1,6 +1,6 @@
 package de.wartbar.framework
 
-class HtmlTableFramework {
+class HtmlTable implements HtmlElement {
 
   private HtmlComposite table = createTable()
   private HtmlComposite row = createRow()
@@ -58,7 +58,8 @@ class HtmlTableFramework {
     addToRow(composite)
   }
 
-  HtmlElement getTable() {
-    return table
+  def render(def markupBuilder) {
+    return table.render(markupBuilder)
   }
+
 }
