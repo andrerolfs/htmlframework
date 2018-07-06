@@ -1,23 +1,17 @@
 package de.wartbar.framework
 
-import groovy.xml.MarkupBuilder
-
 class HtmlTableFrameworkTest extends spock.lang.Specification {
 
   def "test generate()"() {
     setup:
 
-    def writer = new StringWriter()
-    def html = new MarkupBuilder(writer)
     HtmlTableFramework table = new HtmlTableFramework()
     table.setColumns(2)
     table.addText("Hello 1")
     table.addText("World 1")
-    table.addText("Hello 2")
+    table.addElement(new HtmlLink("lo","http://hel"))
     table.addText("World 2")
-    table.getTable().render(html)
-    String output = writer
-
+    String output = HtmlTooling.text(table.getTable())
 
     expect:
     output == '''<table>
@@ -26,7 +20,9 @@ class HtmlTableFrameworkTest extends spock.lang.Specification {
     <td>World 1</td>
   </tr>
   <tr>
-    <td>Hello 2</td>
+    <td>
+      <a href='http://hel'>lo</a>
+    </td>
     <td>World 2</td>
   </tr>
 </table>'''

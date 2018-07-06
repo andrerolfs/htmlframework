@@ -11,7 +11,7 @@ class HtmlTableFramework {
   }
 
   private HtmlComposite createTable() {
-    table = new HtmlComposite()
+    HtmlComposite table = new HtmlComposite()
     table.tag = "table"
     return table
   }
@@ -22,8 +22,8 @@ class HtmlTableFramework {
     return row
   }
 
-  private void addToRow(HtmlLeaf leaf) {
-    row.content.add(leaf)
+  private void addToRow(HtmlElement element) {
+    row.content.add(element)
     if (row.content.size() == columnCount) {
       table.content.add(row)
       row = createRow()
@@ -42,6 +42,20 @@ class HtmlTableFramework {
       leaf.attributes.put("class", classAttribute)
     }
     addToRow(leaf)
+  }
+
+  void addElement(HtmlElement element) {
+    addElement(element, "")
+  }
+
+  void addElement(HtmlElement element, String classAttribute) {
+    HtmlComposite composite = new HtmlComposite()
+    composite.content.add(element)
+    composite.tag = "td"
+    if (!classAttribute.isEmpty()) {
+      composite.attributes.put("class", classAttribute)
+    }
+    addToRow(composite)
   }
 
   HtmlElement getTable() {
