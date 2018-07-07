@@ -12,13 +12,16 @@ class HtmlDivTableTest extends spock.lang.Specification {
     table.addHead("Head Column 1")
     table.addHead("Head Column 2")
     table.addCell("Cell Column 1")
-    table.addCell(new HtmlLink("2","http://cell/column"))
+    table.addCell(new HtmlA("2","http://cell/column"))
     table.addFooter("Footer Column 1")
-    table.addCell("Footer Column 2")
-    String output = HtmlTooling.htmlText(table)
+    table.addFooter("Footer Column 2")
+    String output = HtmlTooling.htmlText(table, "/Users/amos/github/htmlframework/css/divtable.css")
 
     expect:
     output == '''<html>
+  <head>
+    <link rel='stylesheet' href='/Users/amos/github/htmlframework/css/divtable.css' type='text/css' />
+  </head>
   <div class='rTable'>
     <div class='rTableRow'>
       <div class='rTableHeading'>Heading Column 1</div>
@@ -36,7 +39,7 @@ class HtmlDivTableTest extends spock.lang.Specification {
     </div>
     <div class='rTableRow'>
       <div class='rTableFooter'>Footer Column 1</div>
-      <div class='rTableCell'>Footer Column 2</div>
+      <div class='rTableFooter'>Footer Column 2</div>
     </div>
   </div>
 </html>'''

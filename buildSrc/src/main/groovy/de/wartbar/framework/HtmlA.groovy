@@ -1,10 +1,10 @@
 package de.wartbar.framework
 
-class HtmlLink implements HtmlElement {
+class HtmlA implements HtmlElement {
 
   private HtmlLeaf link = null
 
-  HtmlLink(String text, String address) {
+  HtmlA(String text, String address) {
     link = new HtmlLeaf()
     link.tag = "a"
     link.content = text
