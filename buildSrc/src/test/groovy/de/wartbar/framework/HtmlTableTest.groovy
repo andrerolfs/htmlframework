@@ -1,6 +1,6 @@
 package de.wartbar.framework
 
-class HtmlTableFrameworkTest extends spock.lang.Specification {
+class HtmlTableTest extends spock.lang.Specification {
 
   def "test generate()"() {
     setup:

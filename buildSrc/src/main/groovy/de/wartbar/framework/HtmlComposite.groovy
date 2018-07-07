@@ -7,7 +7,7 @@ class HtmlComposite implements HtmlElement {
   List<HtmlElement> content = new ArrayList<>()
 
   def render(def markupBuilder) {
-    def mb
+    def mb = null
     markupBuilder."${tag}"( attributes ) {
       content.each { element ->
         mb = element.render(markupBuilder)

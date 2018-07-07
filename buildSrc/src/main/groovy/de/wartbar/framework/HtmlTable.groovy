@@ -10,13 +10,13 @@ class HtmlTable implements HtmlElement {
     columnCount = count
   }
 
-  private HtmlComposite createTable() {
+  private static HtmlComposite createTable() {
     HtmlComposite table = new HtmlComposite()
     table.tag = "table"
     return table
   }
 
-  private HtmlComposite createRow() {
+  private static HtmlComposite createRow() {
     HtmlComposite row = new HtmlComposite()
     row.tag = "tr"
     return row
