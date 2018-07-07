@@ -47,6 +47,16 @@ class HtmlDivTable implements HtmlElement {
     addToRow(createForText(content, "rTableFooter"))
   }
 
+
+  void addCell(HtmlElement element) {
+    HtmlComposite composite = new HtmlComposite()
+    composite.content.add(element)
+    composite.tag = "div"
+    composite.attributes.put("class", "rTableCell")
+
+    addToRow(composite)
+  }
+
   private static HtmlComposite createForElement(HtmlElement element, String classAttribute) {
     HtmlComposite div = new HtmlComposite()
     div.tag = "div"

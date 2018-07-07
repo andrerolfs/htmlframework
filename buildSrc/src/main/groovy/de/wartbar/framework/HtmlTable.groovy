@@ -30,11 +30,11 @@ class HtmlTable implements HtmlElement {
     }
   }
 
-  void addText(String text) {
-    addText(text, "")
+  void addCell(String text) {
+    addCell(text, "")
   }
 
-  void addText(String text, String classAttribute) {
+  void addCell(String text, String classAttribute) {
     HtmlLeaf leaf = new HtmlLeaf()
     leaf.content = text
     leaf.tag = "td"
@@ -44,11 +44,11 @@ class HtmlTable implements HtmlElement {
     addToRow(leaf)
   }
 
-  void addElement(HtmlElement element) {
-    addElement(element, "")
+  void addCell(HtmlElement element) {
+    addCell(element, "")
   }
 
-  void addElement(HtmlElement element, String classAttribute) {
+  void addCell(HtmlElement element, String classAttribute) {
     HtmlComposite composite = new HtmlComposite()
     composite.content.add(element)
     composite.tag = "td"

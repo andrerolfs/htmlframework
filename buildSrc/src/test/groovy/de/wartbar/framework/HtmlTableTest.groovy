@@ -7,10 +7,10 @@ class HtmlTableTest extends spock.lang.Specification {
 
     HtmlTable table = new HtmlTable()
     table.setColumns(2)
-    table.addText("Hello 1")
-    table.addText("World 1")
-    table.addElement(new HtmlLink("lo","http://hel"))
-    table.addText("World 2")
+    table.addCell("Hello 1")
+    table.addCell("World 1")
+    table.addCell(new HtmlLink("lo","http://hel"))
+    table.addCell("World 2")
     String output = HtmlTooling.htmlText(table)
 
     expect:

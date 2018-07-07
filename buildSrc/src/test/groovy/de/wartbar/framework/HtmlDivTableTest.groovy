@@ -11,8 +11,8 @@ class HtmlDivTableTest extends spock.lang.Specification {
     table.addHeading("Heading Column 2")
     table.addHead("Head Column 1")
     table.addHead("Head Column 2")
-    table.addCell("Head Column 1")
-    table.addCell("Head Column 2")
+    table.addCell("Cell Column 1")
+    table.addCell(new HtmlLink("2","http://cell/column"))
     table.addFooter("Footer Column 1")
     table.addCell("Footer Column 2")
     String output = HtmlTooling.htmlText(table)
@@ -29,8 +29,10 @@ class HtmlDivTableTest extends spock.lang.Specification {
       <div class='rTableHead'>Head Column 2</div>
     </div>
     <div class='rTableRow'>
-      <div class='rTableCell'>Head Column 1</div>
-      <div class='rTableCell'>Head Column 2</div>
+      <div class='rTableCell'>Cell Column 1</div>
+      <div class='rTableCell'>
+        <a href='http://cell/column'>2</a>
+      </div>
     </div>
     <div class='rTableRow'>
       <div class='rTableFooter'>Footer Column 1</div>
