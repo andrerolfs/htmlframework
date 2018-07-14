@@ -4,7 +4,7 @@ import groovy.xml.MarkupBuilder
 
 class MarkupBuilderExample {
 
-  static void printElements(Map<String,String> elements, MarkupBuilder mb) {
+  static void addElement(Map<String,String> elements, MarkupBuilder mb) {
     mb."${elements.tag}"(elements.content)
   }
 
@@ -32,7 +32,7 @@ class MarkupBuilderExample {
     htmlBuilder."html" {
       "${tag}"( attributes1, content1 )
       elements.each { contentIterator ->
-        printElements(contentIterator, htmlBuilder)
+        addElement(contentIterator, htmlBuilder)
       }
     }
 
