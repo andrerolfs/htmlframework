@@ -6,14 +6,12 @@ class HtmlComposite implements HtmlElement {
   Map<String, String> attributes = new HashMap<>()
   List<HtmlElement> content = new ArrayList<>()
 
-  def render(def markupBuilder) {
-    def mb = null
+  void render(def markupBuilder) {
     markupBuilder."${tag}"( attributes ) {
       content.each { element ->
-        mb = element.render(markupBuilder)
+        element.render(markupBuilder)
       }
     }
-    return mb
   }
 
 }

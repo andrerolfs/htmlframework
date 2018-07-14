@@ -11,7 +11,7 @@ class HtmlA implements HtmlElement {
     link.attributes.put("href", address)
   }
 
-  def render(def markupBuilder) {
-    return link.render(markupBuilder)
+  void render(def markupBuilder) {
+    link.render(markupBuilder)
   }
 }

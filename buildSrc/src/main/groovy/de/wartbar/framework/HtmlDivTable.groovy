@@ -19,8 +19,8 @@ class HtmlDivTable implements HtmlElement {
     }
   }
 
-  def render(def markupBuilder) {
-    return table.render(markupBuilder)
+  void render(def markupBuilder) {
+    table.render(markupBuilder)
   }
 
   private static HtmlComposite createTable() {

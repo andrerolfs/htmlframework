@@ -6,7 +6,7 @@ class HtmlLeaf implements HtmlElement {
   Map<String, String> attributes = new HashMap()
   String content
 
-  def render(def markupBuilder) {
-    return markupBuilder."${tag}"( attributes, content)
+  void render(def markupBuilder) {
+    markupBuilder."${tag}"( attributes, content)
   }
 }

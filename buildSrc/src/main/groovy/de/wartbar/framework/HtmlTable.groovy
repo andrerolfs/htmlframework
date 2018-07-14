@@ -58,8 +58,8 @@ class HtmlTable implements HtmlElement {
     addToRow(composite)
   }
 
-  def render(def markupBuilder) {
-    return table.render(markupBuilder)
+  void render(def markupBuilder) {
+    table.render(markupBuilder)
   }
 
 }

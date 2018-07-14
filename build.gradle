@@ -21,19 +21,17 @@ dependencies {
   )
 }
 
-
+import de.wartbar.example.MarkupBuilderExample
 import de.wartbar.framework.HtmlElement
 import de.wartbar.framework.HtmlComposite
 import de.wartbar.framework.HtmlLeaf
 import groovy.xml.*
-
 
 def divClosure = { def mb ->
    mb.div {
      mb.div("765")
    }
 }
-
 
 void addCell(String config, String content, def mb) {
   mb.div(x : config, content)
@@ -98,5 +96,11 @@ task testMB() {
     outer2.render(html)
 
     println writer
+  }
+}
+
+task executeExample() {
+  doLast {
+    MarkupBuilderExample.example()
   }
 }
