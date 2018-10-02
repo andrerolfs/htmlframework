@@ -10,6 +10,9 @@ repositories {
 
 dependencies {
 
+  compile(
+		'org.codehaus.groovy:groovy-all:2.4.12'
+  )
   testCompile(
           'junit:junit:4.12',
           'org.codehaus.groovy:groovy-all:2.4.12',
@@ -21,86 +24,3 @@ dependencies {
   )
 }
 
-import de.wartbar.example.MarkupBuilderExample
-import de.wartbar.framework.HtmlElement
-import de.wartbar.framework.HtmlComposite
-import de.wartbar.framework.HtmlLeaf
-import groovy.xml.*
-
-def divClosure = { def mb ->
-   mb.div {
-     mb.div("765")
-   }
-}
-
-void addCell(String config, String content, def mb) {
-  mb.div(x : config, content)
-}
-
-void addElement(HtmlElement x, def mb) {
-  mb."${x.tag}"( v : x.config, x.content)
-}
-
-
-task testMB() {
-  doLast {
-
-    def writer = new StringWriter()
-    def html = new MarkupBuilder(writer)
-    html.html {
-      head {
-        title 'Simple document'
-      }
-      body(id: 'main') {
-        h1 'Building HTML the Groovy Way'
-        p {
-          mkp.yield 'Mixing text with '
-          strong 'bold'
-          mkp.yield ' elements.'
-        }
-        a href: 'more.html', 'Read more...'
-        div {
-          div(x : 'abc', y : 'bla', 'def')
-        }
-
-        ["hallo","welt"].each { content ->
-          addCell("yo", content, html)
-        }
-
-        divClosure(html)
-      }
-    }
-
-    HtmlLeaf leaf = new HtmlLeaf()
-    leaf.attributes.put("yep1abc", "1123")
-    leaf.attributes.put("yep1def", "1456")
-    leaf.tag = "inner"
-    leaf.content = "leaf"
-
-    HtmlComposite outer1 = new HtmlComposite()
-    outer1.attributes.put("yo2abc", "2123")
-    outer1.attributes.put("yo2def", "2456")
-    outer1.tag = "outer1"
-    outer1.content.add(leaf)
-    outer1.content.add(leaf)
-    outer1.content.add(leaf)
-
-    HtmlComposite outer2 = new HtmlComposite()
-    outer2.attributes.put("yip2abc", "2123")
-    outer2.attributes.put("yip2def", "2456")
-    outer2.tag = "outer"
-    outer2.content.add(leaf)
-    outer2.content.add(outer1)
-    outer2.content.add(leaf)
-
-    outer2.render(html)
-
-    println writer
-  }
-}
-
-task executeExample() {
-  doLast {
-    MarkupBuilderExample.example()
-  }
-}
