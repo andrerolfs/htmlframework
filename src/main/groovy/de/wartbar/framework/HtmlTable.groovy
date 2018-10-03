@@ -6,6 +6,8 @@ class HtmlTable implements HtmlElement {
   private HtmlComposite row = createRow()
   private int columnCount = 1
 
+  HtmlTable() {}
+
   void setColumns(int count) {
     columnCount = count
   }

@@ -6,6 +6,8 @@ class HtmlDivTable implements HtmlElement {
   private HtmlComposite row = createTableRow()
   private int columnCount = 1
 
+  HtmlDivTable() {}
+
   void setColumns(int count) {
     columnCount = count
   }
